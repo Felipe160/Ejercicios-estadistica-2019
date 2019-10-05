@@ -1,0 +1,255 @@
+Duvan Felipe Riaño Rodriguez licencia GPL-2
+
+#ejercicios 
+
+# Ver los set de datos para los paquetes cargado actualmente
+
+data()
+
+# Ver los set de datos para todos los paquetes instalados
+
+data(package = .packages(all.available = TRUE))
+
+#primero debemos verificar si tenemos descargados los siguientes paquetes para la realizacion de la practica 
+
+library(ape)
+library(permute)
+library(vegan)
+library(ade4)
+library(geiger)
+
+#en caso tal de no tener instalado alguno de los paquetes procedemos a descargarlos de la siguiente manera
+install.packages("permute","vegan")
+
+#entre la comillas el nombre de los paquetes que no estan instalados 
+#una vez descargados todos los paquetes se cargan los paquetes de datos para la practica
+
+# Paquete ape
+data(carnivora)
+
+#Paquete permute
+data(jackal)
+
+#Paquete vegan
+data(jackal)
+
+data(BCI)
+
+data(mite.env)
+
+#Paquete ade4
+data(atlas)
+
+data(carniherbi49)
+
+data(corvus)
+
+data(tortues)
+
+#Paquete geiger
+data(geospiza)
+
+#una vez cargados los datos procedemos a realizar los ejercicos
+**Ejer:** ¿Que clase de objeto es BIC? ¿Qué clase de objeto es geospiza? use la función 
+*str* para obtener información sobre la estructura.
+
+# Clase
+class(geospiza)
+class(BCI)
+
+
+#Estrúctura
+str(BCI)
+str(geospiza)
+
+# ¿Qué es geospiza?(informacion sobre los datos: autor,significado de las variables etc.)
+
+help("geospiza")
+
+**Ejer:** ¿Qué tipo de variable es tarsusL y qué clase? 
+Abra el objeto *tortues* y mire ¿Qué tipo de variables tiene y qué clase son?, haga lo mismo con el objeto *mite.env* y revise 
+¿Qué tipo de variable es *shurb* y qué clase es?
+
+
+#primero revisamos la clase del objeto tarsusL 
+
+class(geospiza$tarsusL)
+[1] "NULL"
+
+#revision de la clase de los datos de tortues
+
+View(tortues)
+> class(tortues)
+[1] "data.frame"
+> class(tortues$long)
+[1] "numeric"
+> class(tortues$larg)
+[1] "numeric"
+> class(tortues$haut)
+[1] "numeric"
+> class(tortues$sexe)
+[1] "factor"
+
+#revision de la clase de los datos de mite.evn
+
+> View(mite.env)
+> class(mite.env)
+[1] "data.frame"
+> class(mite.env$SubsDens)
+[1] "numeric"
+> class(mite.env$WatrCont)
+[1] "numeric"
+> class(mite.env$Substrate)
+[1] "factor"
+> class(mite.env$Shrub)
+[1] "ordered" "factor" 
+> class(mite.env$Topo)
+[1] "factor"
+
+**Ejer:** usando el data.frame *tortues* calcule la proporción de hembras y machos de la muestra
+#proporcion de machos
+> sex <- c('F', 'M')
+> M <- length(which(tortues == 'M'))
+> M
+[1] 24
+#proporcion de hembras
+> F <- length(which(tortues == 'F'))
+> F
+[1] 24
+propocion de hembras/machos 
+> paste(F,'/',M,sep = '')
+[1] "24/24"
+> F/M
+[1] 1  
+#el resultado indica que por cada macho hay una hembra
+
+**Ejer:** usando el data.frame *tortues* calcule la proporción entre el ancho y el largo del caparazón, genere una tabla con la información de *tortues* 
+y la nueva variable derivada.
+
+
+> medidas<-cbind(tortues$long,tortues$larg)
+> colnames(medidas)<-c("largo","ancho")
+> prp <- tortues$long/tortues$larg
+> relacion_ancho_largo<-cbind(medidas,prp)
+> relacion_ancho_largo
+  largo ancho      prp
+ [1,]    93    74 1.256757
+ [2,]    94    78 1.205128
+ [3,]    96    80 1.200000
+ [4,]   101    84 1.202381
+ [5,]   102    85 1.200000
+ [6,]   103    81 1.271605
+ [7,]   104    83 1.253012
+ [8,]   106    83 1.277108
+ [9,]   107    82 1.304878
+[10,]   112    89 1.258427
+[11,]   113    88 1.284091
+[12,]   114    86 1.325581
+[13,]   116    90 1.288889
+[14,]   117    90 1.300000
+[15,]   117    91 1.285714
+[16,]   119    93 1.279570
+[17,]   120    89 1.348315
+[18,]   120    93 1.290323
+[19,]   121    95 1.273684
+[20,]   125    93 1.344086
+[21,]   127    96 1.322917
+[22,]   128    95 1.347368
+[23,]   131    95 1.378947
+[24,]   135   106 1.273585
+[25,]    98    81 1.209877
+[26,]   103    84 1.226190
+[27,]   103    86 1.197674
+[28,]   105    86 1.220930
+[29,]   109    88 1.238636
+[30,]   123    92 1.336957
+[31,]   123    95 1.294737
+[32,]   133    99 1.343434
+[33,]   133   102 1.303922
+[34,]   133   105 1.266667
+[35,]   134   100 1.340000
+[36,]   136   102 1.333333
+[37,]   137    98 1.397959
+[38,]   138    99 1.393939
+[39,]   141   105 1.342857
+[40,]   147   108 1.361111
+[41,]   149   107 1.392523
+[42,]   153   107 1.429907
+[43,]   155   115 1.347826
+[44,]   155   117 1.324786
+[45,]   158   115 1.373913
+[46,]   159   118 1.347458
+[47,]   162   124 1.306452
+[48,]   177   132 1.340909
+
+**Ejer:** ¿Cuántas especies de *Corvus* fueron muestreadas en la región Paleártica-Africana? Use el data.frame del género 
+*Corvus*. ¿Qué porcentaje de *Corvus* muestreados habitan zonas abiertas
+
+frecuencia<-table(corvus$phylog)
+> frecuencia
+
+ amer orien  pale 
+    6    13     9 
+
+#fueron muestreadas en la región Paleártica-Africana 9 corvus
+
+> habitat<-table(corvus$habitat)
+> habitat
+
+clos open 
+  11   17 
+> prop.table(habitat)
+
+     clos      open 
+0.3928571 0.6071429
+**Ejer:** ¿Cómo luce el gráfico de frecuencias para los tipos de hábitat del género *Corvus*?
+> plot(frecuencia)
+> plot(habitat)
+
+**Ejer:** encuentre el máximo, así como lo hizo para el mínimo
+Preguntar cuál es el  el máximo.
+# Sumar las ocurrencias de cada especie
+> atlas$birds
+
+> xsp<- apply(atlas$birds,2,sum)
+ 
+ # Preguntar cuál es el mínimo 
+> min(xsp)
+[1] 2
+ 
+> which.min(xsp)
+Fauvette_melanocephale 
+                     8 
+ 
+ 
+> xsp[which.min(xsp)]
+Fauvette_melanocephale 
+                     2 
+
+ # podríamos generar vectores
+
+> min(xsp)
+[1] 2
+
+> x <- which.min(xsp)
+> xsp[x]
+Fauvette_melanocephale 
+                     2 
+#preguntar cuan es el maxinmo
+> y<-which.max(xsp)
+> y
+Fauvette_des_jardins 
+                   2 
+> xsp[y]
+Fauvette_des_jardins 
+                  56 
+ **Ejer:** Repita el ejercicio para las variables continuas de tamaño de pico y tamaño del ala en el género *Corvus*. 
+ Busque cómo cambiar colores, ejes y algunas propiedades que le permitan mejorar el diseño del histograma.  
+ > hist(corvus$bill, col="orange", main = "Corvus pico" ,xlab = "tamaño en mm")
+ > hist(corvus$wing, col="red", main = "Corvus alas" ,xlab = "tamaño en mm")
+
+
+
+
+
+
