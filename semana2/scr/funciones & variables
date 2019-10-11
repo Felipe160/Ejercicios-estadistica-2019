@@ -203,8 +203,8 @@ clos open
      clos      open 
 0.3928571 0.6071429
 **Ejer:** ¿Cómo luce el gráfico de frecuencias para los tipos de hábitat del género *Corvus*?
-> plot(frecuencia)
-> plot(habitat)
+
+plot(prop.table(habitat), main= "Corvus segun el tipo de habitad", ylab ="Freq de la especie", col=c("red","blue"))
 
 **Ejer:** encuentre el máximo, así como lo hizo para el mínimo
 Preguntar cuál es el  el máximo.
@@ -245,7 +245,28 @@ Fauvette_des_jardins
                   56 
  **Ejer:** Repita el ejercicio para las variables continuas de tamaño de pico y tamaño del ala en el género *Corvus*. 
  Busque cómo cambiar colores, ejes y algunas propiedades que le permitan mejorar el diseño del histograma.  
- > hist(corvus$bill, col="orange", main = "Corvus pico" ,xlab = "tamaño en mm")
+ 
+ # maximo y minimo del pico
+ > max(corvus$bill)
+[1] 85
+> min(corvus$bill)
+[1] 45
+> range(corvus$bill)
+[1] 45 85
+
+#maximo y minimo del las alas 
+
+ > max(corvus$wing)
+[1] 473
+> min(corvus$wing)
+[1] 226
+> range(corvus$wing)
+[1] 226 473
+ 
+ # histogramas
+ 
+ 
+> hist(corvus$bill, col="orange", main = "Corvus pico" ,xlab = "tamaño en mm")
  > hist(corvus$wing, col="red", main = "Corvus alas" ,xlab = "tamaño en mm")
 
 
