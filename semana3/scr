@@ -15,29 +15,64 @@ data(iris)
  
 iris
 
-# creamos la funcion teniendo en cuenta la formula de media aritmetica
- 
-promedio_ancho <- function(x) {
-        suma_ancho<- sum(x)
-        n_ancho<-length(x)
-        prom_ancho<- suma_ancho/n_ancho
-        return(prom_ancho)
-}
- promedio_ancho(x= iris$Sepal.Width[which(iris$Species=='setosa')])
-[1] 3.428
+# creamos la funcion teniendo en cuenta la formula de mediana
 
+mediana_ancho<-function(y){
+        orden<-sort(y)
+        n_datos<-length(y)
+        mitad<-n_datos/2
+        valor<-y[mitad]
+        return(valor)
+      
+}
+mediana_ancho(setosa)
+[1] 3.4
 
 # se comprueba si el resultado es correcto con la funcion por defecto
-mean(iris$Sepal.Width[which(iris$Species=='setosa')])
-[1] 3.428
+median(iris$Sepal.Width[which(iris$Species=='setosa')])
+[1] 3.4
 
 #**Ejer:** Genere una funciÃ³n propia que le permita calcular la moda
-freq <- table(setosa)
-freq
-moda<-freq[which.max(freq)]
-moda
+mi_moda<-function(z){
+        freq <- table(z)
+        valor<-freq[which.max(freq)] 
+        return(valor)
+}
+mi_moda(setosa)
+3.4 
+  9
+  
+  
+#**Ejer:** DespuÃ©s de generar la funciÃ³n del cÃ¡lculo de moda, grafÃ­quela sobre el histograma.
+  
+hist(setosa,
+col = "gray",
+border = "black", 
+prob = TRUE, 
+xlim = c(2.0,4.5),
+xlab = "ancho de petalo",
+main = "Frecuencias de ancho de petalo de setosa")
+lines(density(setosa),
+lwd = 2, 
+col = "green") 
 
 
+abline(v = mediana_ancho(setosa),
+col = "red",
+lwd = 2)
+
+legend(x = "topright",
+c("Densidad", "Mediana"),
+col = c("green",  "red"),
+lwd = c(2, 2, 2))
+
+
+
+#**Ejer:** Genere los cuantiles en intervalos de 0.5
+
+quantile(setosa,probs = c(seq(0, 1, 0.5)))
+  0%  50% 100% 
+ 2.3  3.4  4.4 
 
 
 
