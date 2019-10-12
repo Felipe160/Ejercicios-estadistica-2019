@@ -1,0 +1,44 @@
+Duvan Felipe Riaño Rodriguez licencia GPL-2
+
+# ejercicios semana #3
+
+#**Ejer:** Si la columna iris$Petal.Length tuviera valores 'NA', Â¿CÃ³mo podrÃ­a eliminarlos antes de hacer la estimaciÃ³n de la media?
+
+# a la hora de realizar la funcion se le utiliza "na.rm = T " para que remueva todos los valores que son = NA
+mean(iris$Petal.Length[which(iris$Species=='setosa')],na.rm=TRUE)
+
+
+
+#para resolver este ejercico haremas uso de la columna Petal.widht para la especie Setosa 
+
+data(iris)
+ 
+iris
+
+# creamos la funcion teniendo en cuenta la formula de media aritmetica
+ 
+promedio_ancho <- function(x) {
+        suma_ancho<- sum(x)
+        n_ancho<-length(x)
+        prom_ancho<- suma_ancho/n_ancho
+        return(prom_ancho)
+}
+ promedio_ancho(x= iris$Sepal.Width[which(iris$Species=='setosa')])
+[1] 3.428
+
+
+# se comprueba si el resultado es correcto con la funcion por defecto
+mean(iris$Sepal.Width[which(iris$Species=='setosa')])
+[1] 3.428
+
+#**Ejer:** Genere una funciÃ³n propia que le permita calcular la moda
+freq <- table(setosa)
+freq
+moda<-freq[which.max(freq)]
+moda
+
+
+
+
+
+
