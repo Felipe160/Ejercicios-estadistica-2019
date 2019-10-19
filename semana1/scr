@@ -1,0 +1,119 @@
+Duvan Felipe Riaño Rodriguez licencia GPL-2
+Universidad Industrial de Santander
+
+#ejercicios primera semana introduccion
+
+
+*Ejer:** Reasigne 5 a la letra *z*, usando el operador *<-*, ahora, pregunte Â¿quÃ© es *z*?
+
+
+z <- 5 
+z 
+
+
+
+**Ejer:** Revisemos quÃ© es rnorm(1). Empecemos buscando la funciÃ³n en help o ?rnorm
+
+?rnorm
+
+rnorm (1)
+[1] 0.2670988
+
+
+
+#**Ejer:** multiplique *x* por 2 y sumele 1 y dividalo por 1.5, ese resultado elevelo al cuadrado. 
+#Esto se escribe igual que en una calculadora manual.
+
+x <- 1:10
+
+ operacion<- (((x*2)+1)/1.5)
+ operacion
+ [1]  2.000000  3.333333  4.666667  6.000000  7.333333  8.666667 10.000000
+ [8] 11.333333 12.666667 14.000000
+ 
+  operacion_2<-(operacion^2)
+ operacion_2
+ [1]   4.00000  11.11111  21.77778  36.00000  53.77778  75.11111 100.00000
+ [8] 128.44444 160.44444 196.00000
+
+
+
+**Ejer:** tome cualquier objeto anterior y preguntele la clase
+
+class(operacion)
+[1] "numeric"
+
+**Ejer:** Â¿QuÃ© clase tiene el vector?
+prueba <- c(1, "perro", FALSE, "gato", 1.5)
+class(prueba)
+
+
+
+#**Ejer:** Hasta el momento hemnos generado varios vectores/objetos/variables, podemos listarlas usando la funciÃ³n ls() o ls.str(), 
+#la cual nos permite, no solo ver las variables, sino el tipo de cada una.
+
+ls()
+  [1] "Ancho"                "ancho_setosa"         "arreglo"             
+  [4] "asa_datos"            "asa_pasajeros"        "atlas"               
+  [7] "BCI"                  "bins"                 "c"                   
+ [10] "camioneta"            "carniherbi49"         "carnivora"           
+
+
+
+#**Ejer:** Cree un una secuencia que repita los nÃºmeros de 1 a 4, 3 veces y asignela a un objeto llamado vector1. 
+#Ahora, cree una secuencia de nÃºmeros pares del 2 al 24 y asignela a un objeto llamado vector2. Gnere un arreglo con ambos vectores y busque la columna 2, fila 1 de la segunda matriz y para la primera.
+
+ vector1<-rep(1:4,3)
+ vector1
+ [1] 1 2 3 4 1 2 3 4 1 2 3 4
+ vector2<- seq(2,24,2)
+ vector2
+ [1]  2  4  6  8 10 12 14 16 18 20 22 24
+ array<-array(data = c(vector1,vector2),dim = c(3,4,2))
+ array
+, , 1
+
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    3    2
+[2,]    2    1    4    3
+[3,]    3    2    1    4
+
+, , 2
+
+     [,1] [,2] [,3] [,4]
+[1,]    2    8   14   20
+[2,]    4   10   16   22
+[3,]    6   12   18   24
+
+
+
+#**Ejer:**  tome la primera columna  y la segunda, concatenelas con c() Â¿QuÃ© encuentra?
+#Ahora, tome amabas columnas y use la funcion cbind(), asignelo a un objeto llamado mi nueva tabla.
+#Haga lo mismo, con las filas del 1:5 y del 10:30, use primero c() y luego rbind() Â¿QuÃ© encuentra? 
+\
+
+data (iris)
+
+c(iris$Sepal.Length, iris$Sepal.Width)
+
+nueva_tabla <- cbind(iris$Sepal.Length, iris$Sepal.Width)
+nueva_tabla
+c(iris[1:5,], iris[10:30,])
+
+Nueva <- rbind(iris[1:5,], iris[10:30,])
+Nueva
+
+Busque el archivo suministrado por el profesor, carguelo a R y revise quÃ© contien. 
+Extraiga las 5 primeras columnas con las 10 primeras filas, escriba esa nueva matriz como csv en su computador.
+
+ejer_1 <- read.csv("/Users/DuvanF/Documents/estadistica_lab/Matrix_Multivariate_Mega.csv", header = T,sep = ";")
+View(ejer_1)
+
+mini_tabla <- ejer_1[1:10,1:5]
+View(mini_tabla)
+
+write.csv(mini_tabla,file = '/Users/DuvanF/Documents/estadistica_lab/Minimatriz.csv')
+
+
+
+
