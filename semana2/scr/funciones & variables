@@ -271,6 +271,15 @@ Fauvette_des_jardins
 
 
 
+#Invente unos datos de medidas, como se hizo en el caso de los crÃ¡neos, y genere todo el ejercicio hasta el histograma. 
+#Busque otro tipo de distribuciones para generar las variables [ejemplo][3]. 
+#Busque en quÃ© casos sirve cada distribuciÃ³n o para quÃ© se usan.
 
-
-
+#estudio del grosor y alto de pinos en un bosque de colombia 
+ Ancho <- rnorm(n =50, mean= 15, sd= 2)
+ alto <- rnorm(n=50, mean =30, sd=4 )
+ prom<-(alto/Ancho)
+ pinos_bosque <- cbind(Ancho, alto,prom)
+Tabla_pinos <- as.data.frame(cbind(paste('spp',1:50,sep = '_'),pinos_bosque))
+colnames(Tabla_pinos) <- c('Individuo', 'Ancho','alto',"promedio")
+hist(Tabla_pinos$prom, main = "RELACION ALTO Y ANCHO DE PINOS",col="bronw")
