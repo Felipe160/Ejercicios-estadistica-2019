@@ -111,3 +111,67 @@ $Petal.Width
 
 
 
+
+#**Ejer:** grafique la distribuciÃ³n de frecuencias de cada poblaciÃ³n 
+#usando histograma y densidad en el mismo grÃ¡fico. Adiciones la media,
+#la mediana y la moda.
+
+
+hist(pop1, 
+     col = "orange",
+     border = "black",
+     xlim = c(0, 9), ylim = c(0.0,50),
+     xlab = "# individuos población",
+     main = "Distribución Población 1"
+) 
+
+abline(v = mean(pop1),
+       col = "red",
+       lwd =5 )
+
+abline(v = median(pop1),
+       col = "blue",
+       lwd = 3)
+abline(v=mi_moda(pop1),
+       col="yellow",
+       lwd=3)
+
+legend(x = "topright", 
+       c( "Mean", "Median", "Mode"),
+       col = c( "red", "blue", "yellow"),
+       lwd = c(3, 3, 3, 3))
+
+
+
+
+
+#histograma de la poblacion 2 de aves
+
+hist(pop2, 
+     col = "orange",
+     border = "black", 
+     xlim = c(0, 25), ylim = c(0.0,50),
+     xlab = "# individuos población",
+     main = "Distribución Población 2"
+) 
+ 
+abline(v = mean(pop1),
+       col = "red",
+       lwd =3 )
+
+abline(v = median(pop2),
+       col = "blue",
+       lwd = 3)
+abline(v=mi_moda(pop2),
+       col="yellow",
+       lwd=3)
+
+legend(x = "topright", 
+       c( "Mean", "Median", "Mode"),
+       col = c( "red", "blue", "yellow"),
+       lwd = c(3, 3, 3, 3))
+       
+#en los graficos se puede observar una distribucion mas simetrica en la poblacion 1 de aves y que la media y mediana estan muy cerca 
+#en estas graficas tambien se observa la linea de la moda en un ponto que se cree improbable pero esto se debe a que todos los datos solo 
+#estan una vez asi que la moda no existe ya que no hay dato quye se repita mas veces.   
+
