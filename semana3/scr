@@ -1,4 +1,8 @@
-Duvan Felipe Riaño Rodriguez licencia GPL-2
+#Universida Industrial de Santander UIS
+#Facultad de ciencias-Biologia
+
+#Duvan felipe Riaño Rodriguez-2181729
+#licencia GPL-2
 
 # ejercicios semana #3
 
@@ -173,5 +177,160 @@ legend(x = "topright",
        
 #en los graficos se puede observar una distribucion mas simetrica en la poblacion 1 de aves y que la media y mediana estan muy cerca 
 #en estas graficas tambien se observa la linea de la moda en un ponto que se cree improbable pero esto se debe a que todos los datos solo 
-#estan una vez asi que la moda no existe ya que no hay dato quye se repita mas veces.   
+#estan una vez asi que la moda no existe ya que no hay dato quye se repita mas veces.  
+
+
+
+
+#desarrollo ultimo ejercicico de la semana 4
+#Ejer: Lea el resumen y las gráficas del articulo de Magund 2007. 
+#Cargue los datos llamados '2007_EAA_Magud_et_al_data.csv' 
+#usando la función read.csv(). Estime todos los estadísticos vistos 
+#en esta práctica para las variables 'body length', 'tubercles 1b apart' y 'tarsus I length'.
+#Grafique sus análisis y exportelos usando las funciones PNG o PDF. 
+#Escriba un párrafo de no más de 200 analizando lo que encontró. 
+#Tenga en cuenta que solo describir las salidas implica descripción de resultados no análisis.
+
+
+
+getwd()
+#ajustamos la direccion donde tenemos el archivo 
+setwd("C:/Users/DuvanF/Downloads/estadistica/lab/Semana4_Descriptores_Medidas")
+
+#cargamos los datos y los almacenamos en la variable datos_4
+
+datos_4<-read.csv("2007_EAA_Magud_et_al_data.csv", sep =",", header = T)
+View(datos_4)
+#A-body length
+#P-tubercles 1b apart
+#W-tarsus I length
+
+body_le<-datos_4$A
+x<-summary(body_le)
+
+hist(body_le, # histogram
+     col = "grey80", # column color
+     border = "black", 
+     prob = TRUE, # show densities instead of frequencies
+     xlim = c(145,250),
+     xlab = "Longitud de cuerpo",
+     main = "Frecuencias de longitud de cuerpo")
+lines(density(body_le),
+      lwd = 2, 
+      col = "chocolate3") 
+
+# Graficar la media
+
+abline(v = x[2],
+       col = "red1",
+       lwd = 2)
+
+abline(v = x[3],
+       col = "green",
+       lwd = 4)
+
+abline(v = x[4],
+       col = "blue",
+       lwd = 2)
+
+abline(v = x[5],
+       col = "orange",
+       lwd = 2)
+
+
+legend(x = "topright", # location of legend within plot area
+       c("Density plot","1st Qu", "Media", "Mediana","3st Qu" ),
+       col = c("chocolate3", "red1","green","blue", "orange"),
+       lwd = c(2, 2, 2))
+
+#segundo grupo de datos 
+
+#P-tubercles 1b apart
+tubercles<-datos_4$P
+y<-summary(tubercles)
+
+hist(tubercles, # histogram
+     col = "white", # column color
+     border = "black", 
+     prob = TRUE, # show densities instead of frequencies
+     xlim = c(7,16),
+     xlab = "Tuberculos",
+     main = "tuberculos apartado 1b")
+lines(density(tubercles),
+      lwd = 2, 
+      col = "chocolate3") 
+
+# Graficar la media
+
+abline(v = y[2],
+       col = "red1",
+       lwd = 2)
+
+abline(v = y[3],
+       col = "green",
+       lwd = 4)
+
+abline(v = y[4],
+       col = "blue",
+       lwd = 2)
+
+abline(v = y[5],
+       col = "orange",
+       lwd = 2)
+
+
+legend(x = "topright", # location of legend within plot area
+       c("Density plot","1st Qu", "Media", "Mediana","3st Qu" ),
+       col = c("chocolate3", "red1","green","blue", "orange"),
+       lwd = c(2, 2, 2))
+
+#tercer grupo de datos 
+#W-tarsus I length
+tarsus<-datos_4$W
+z<-summary(tarsus)
+
+
+hist(tarsus, # histogram
+     col = "white", # column color
+     border = "black", 
+     prob = TRUE, # show densities instead of frequencies
+     xlim = c(2.8,9.2),
+     xlab = "Tarso",
+     main = "longitud del tarso I")
+lines(density(tarsus),
+      lwd = 2, 
+      col = "chocolate3") 
+
+# Graficar la media
+
+abline(v = z[2],
+       col = "red1",
+       lwd = 2)
+
+abline(v = z[3],
+       col = "green",
+       lwd = 4)
+
+abline(v = z[4],
+       col = "blue",
+       lwd = 2)
+
+abline(v = z[5],
+       col = "orange",
+       lwd = 2)
+
+
+legend(x = "topright", # location of legend within plot area
+       c("Density plot","1st Qu", "Media", "Mediana","3st Qu" ),
+       col = c("chocolate3", "red1","green","blue", "orange"),
+       lwd = c(2, 2, 2))
+
+
+#
+#
+#
+#
+#
+#
+
 
